@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Moq;
+using Sat.Recruitment.Api.Interfaces;
 using Sat.Recruitment.Api.Models;
 using Sat.Recruitment.Api.Services;
 using System.IO;
@@ -12,10 +13,15 @@ namespace Sat.Recruitment.Test.Services
     {
         private MockRepository mockRepository;
 
+        private Mock<IValidationService<User>> mockValidationService;
+        private Mock<IConfiguration> mockConfiguration;
 
         public UsersServiceTests()
         {
             this.mockRepository = new MockRepository(MockBehavior.Strict);
+
+            this.mockValidationService = this.mockRepository.Create<IValidationService<User>>();
+            this.mockConfiguration = this.mockRepository.Create<IConfiguration>();
         }
 
         private UsersService CreateService()
@@ -38,7 +44,7 @@ namespace Sat.Recruitment.Test.Services
             User newUser = new()
             {
                 Address = "Alvear y Colombres",
-                Email = "user+polo@example.com",
+                Email = "us er+pol o@example.com",
                 Money = 59,
                 Name = "Marvyn harryson Jeanty",
                 Phone = "+8496262888",

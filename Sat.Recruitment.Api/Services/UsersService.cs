@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Sat.Recruitment.Api.Services
@@ -124,11 +126,10 @@ namespace Sat.Recruitment.Api.Services
         {
             try
             {
-                //Normalize email
-                var aux = Email.Split(new char[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
-                var atIndex = aux[0].IndexOf("+", StringComparison.Ordinal);
-                aux[0] = atIndex < 0 ? aux[0].Replace(".", "") : aux[0].Replace(".", "").Remove(atIndex);
-                return string.Join("@", new string[] { aux[0], aux[1] });
+                Email = Regex.Replace(Email, @"\s+", string.Empty);
+                MailAddress mail = new(Email);
+                var User = mail.User.Contains("+")? mail.User.Replace(".", string.Empty).Remove(mail.User.IndexOf("+", StringComparison.Ordinal)): mail.User.Replace(".", string.Empty);
+                return string.Format("{0}@{1}", User, mail.Host);
             }
             catch (Exception)
             {

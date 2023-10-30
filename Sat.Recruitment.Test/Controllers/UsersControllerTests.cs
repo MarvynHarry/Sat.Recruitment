@@ -46,7 +46,7 @@ namespace Sat.Recruitment.Test.Controllers
             newUser = new()
             {
                 Address = "Alvear y Colombres",
-                Email = "user+polo@example.com",
+                Email = "user+po.lo@example.com",
                 Money = 59,
                 Name = "Marvyn harryson Jeanty",
                 Phone = "+8496262888",
