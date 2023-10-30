@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sat.Recruitment.Api.Interfaces;
 using Sat.Recruitment.Api.Models;
+using Sat.Recruitment.Api.Models.Atributes;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace Sat.Recruitment.Api.Controllers
 
         [HttpPost]
         [Route("/create-user")]
+        [ValidateModel]
         public async Task<Result<User>> CreateUser(User newUser)
         {
             try

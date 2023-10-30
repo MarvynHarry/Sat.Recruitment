@@ -27,7 +27,7 @@ namespace Sat.Recruitment.Api.Services
                 var ValidationResult = _ValidationService.Validate(newUser);
 
                 if (!ValidationResult.IsSuccess)
-                    return new ()
+                    return new()
                     {
                         IsSuccess = ValidationResult.IsSuccess,
                         Errors = ValidationResult.Errors,
@@ -56,7 +56,7 @@ namespace Sat.Recruitment.Api.Services
 
                         break;
                     default:
-                        throw new ("UserType dont Exist");
+                        throw new("UserType dont Exist");
                 }
 
                 await ReadUsersFromFile();
@@ -66,14 +66,14 @@ namespace Sat.Recruitment.Api.Services
 
                 if ((_users.Any(x => x.Email.Trim().ToLower() == newUser.Email.Trim().ToLower() || x.Phone.Trim().ToLower() == newUser.Phone.Trim().ToLower()))
                     || (_users.Any(x => x.Name.Trim().ToLower() == newUser.Name.Trim().ToLower() && x.Address.Trim().ToLower() == newUser.Address.Trim().ToLower())))
-                    throw new ("User is duplicated");
+                    throw new Exception("User is duplicated");
                 else
                 {
                     File.AppendAllText(_txtPath, Environment.NewLine + string.Format("{0},{1},{2},{3},{4},{5}", newUser.Name, newUser.Email, newUser.Phone, newUser.Address, newUser.UserType, newUser.Money));
                     await FormatTXT();
                 }
 
-                return new ()
+                return new()
                 {
                     ResultModel = newUser,
                     SuccesMessages = { "User Created" },
@@ -82,9 +82,16 @@ namespace Sat.Recruitment.Api.Services
                     Errors = { }
                 };
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return new()
+                {
+                    ResultModel = newUser,
+                    SuccesMessages = { },
+                    Warmings = { },
+                    IsSuccess = false,
+                    Errors = { ex.Message }
+                };
             }
         }
 
@@ -93,15 +100,21 @@ namespace Sat.Recruitment.Api.Services
             try
             {
                 await ReadUsersFromFile();
-                return new ()
+                return new()
                 {
+                    IsSuccess = true,
                     ResultModel = _users,
                 };
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                return new()
+                {
+                    SuccesMessages = { },
+                    Warmings = { },
+                    IsSuccess = false,
+                    Errors = { ex.Message }
+                };
             }
         }
 
@@ -137,6 +150,7 @@ namespace Sat.Recruitment.Api.Services
 
             try
             {
+                _users.Clear();
                 while (reader.Peek() >= 0)
                 {
                     var line = await reader.ReadLineAsync();
