@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Moq;
+using Sat.Recruitment.Api.Interfaces;
 using Sat.Recruitment.Api.Models;
 using Sat.Recruitment.Api.Services;
 using System.IO;
@@ -12,10 +13,15 @@ namespace Sat.Recruitment.Test.Services
     {
         private MockRepository mockRepository;
 
+        private Mock<IValidationService<User>> mockValidationService;
+        private Mock<IConfiguration> mockConfiguration;
 
         public UsersServiceTests()
         {
             this.mockRepository = new MockRepository(MockBehavior.Strict);
+
+            this.mockValidationService = this.mockRepository.Create<IValidationService<User>>();
+            this.mockConfiguration = this.mockRepository.Create<IConfiguration>();
         }
 
         private UsersService CreateService()
