@@ -1,48 +1,82 @@
 # Sat.Recruitment
 
-A developer went on vacation and several issues arose in the project that needed to be resolved.
+## Overview
 
-The webAPI works, but it has many flaws in architecture, code quality, testing and etc.
+Sat.Recruitment is a web application designed to streamline the recruitment process. This project demonstrates a full-stack implementation using modern technologies and best practices to handle job applications efficiently.
 
-We need you to refactor the code of this project.
+## Features
 
-Remember to treat it as a refactoring of a final code, which will go to production and has to be as good as possible.
+- **User Registration**: Allows users to create an account and manage their profile.
+- **Job Listings**: Displays available job opportunities.
+- **Application Form**: Lets users apply for jobs by submitting their details.
+- **Admin Dashboard**: Provides an interface for administrators to manage job postings and review applications.
+- **Responsive Design**: Ensures the application works well on both desktop and mobile devices.
 
-## What we expect to find in the Challenge
+## Technologies Used
 
-In the result of the refactoring we would like to find:
+- **Frontend**: Angular
+- **Backend**: .NET Core
+- **Database**: [Specify the database if any, e.g., SQL Server, PostgreSQL, etc.]
+- **Authentication**: [Specify if JWT or another method is used]
+- **Deployment**: [Specify deployment tools or platforms if applicable]
 
-- Object-oriented programming.
+## Getting Started
 
-- An architectural model. The one that you consider most applicable or that you have more experience.
+### Prerequisites
 
-- The Clean Code concepts that you consider important.
+- [Node.js](https://nodejs.org/) (for Angular development)
+- [.NET Core SDK](https://dotnet.microsoft.com/download) (for backend development)
+- [Database](#) (e.g., SQL Server, PostgreSQL)
 
-- The best unit tests you can do and with the code coverage you consider important.
+### Installation
 
-- A polymorphic system or some design pattern. The one that fits the most or that you like the most.
+1. **Clone the Repository**
 
-- Transversal/crosscutting concepts that you consider important to a webAPI in production such as logging, validation, exception handling...
+   ```bash
+   git clone https://github.com/MarvynHarry/Sat.Recruitment.git
+   cd Sat.Recruitment
+2. **Frontend Setup**
 
-- REST concepts, SOLID principles and good practices applied.
+   ```bash
+   cd ClientApp
+   npm install
+3. **Backend Setup**
 
-- And you want to take more time in the challenge you can change the type of persistence (currently TXT file), but consider that your new implementation should be working.
+   ```bash
+   cd ../Server
+   dotnet restore
+4. **Database Configuration**
 
-Do the best you can.
+   Update the connection string in appsettings.json file located in the Server directory with your database credentials.
 
+5. **Run the Application**
+   - Start the backend server:   
+       ```bash
+       dotnet run
+       ```
+   
+   - Start the frontend application:
+     ```bash
+     cd ../ClientApp
+     npm start
 
-## How much time do you have for the challenge
+The application should now be running at http://localhost:4200 for the frontend and http://localhost:5000 for the backend.
 
-It is a small WebAPI and normally a good refactoring can be done in about 2 hours.
+## Usage
 
-But we know that each one has its speed and in general we prefer to prioritize the quality of delivery, so there is no time limit.
+  1. Register an Account: Go to the registration page and fill out the required fields.
+  1. Browse Job Listings: Navigate to the job listings page to view available positions.
+  1. Apply for a Job: Select a job and complete the application form to submit your application.
+  1. Admin Dashboard: Access the admin dashboard to manage job postings and review applications.
 
+## Support My Work
+If you enjoy my work or want to support what I do, feel free to [Buy Me a Coffee](https://buymeacoffee.com/marvynharry)!
 
-## As you must deliver the challenge once finished
+## Contributing
+Feel free to submit a pull request or report issues to help improve the project!
 
-For you to do the challenge you must create a branch or a fork from this one (main).
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-And once you have finished the refactoring you can send us:
-
-* The link of your branch on Github
-* The link of a PR from your branch to the original repo
+## Contact
+For any questions or support, please reach out via [GitHub Issues](https://github.com/MarvynHarry/Blazor-JTW-Auth/issues).
