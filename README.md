@@ -79,4 +79,4 @@ Feel free to submit a pull request or report issues to help improve the project!
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
-For any questions or support, please reach out via [GitHub Issues](https://github.com/MarvynHarry/Blazor-JTW-Auth/issues).
+For any questions or support, please reach out via [GitHub Issues](https://github.com/MarvynHarry/Sat.Recruitment/issues).
